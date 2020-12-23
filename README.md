@@ -1,16 +1,34 @@
-# authentication_app
+# Authentication App
 
-A new Flutter project.
+Este é um aplicativo configurado para realizar login através do firebase com o sua conta do google ou facebook
 
-## Getting Started
+OBS: <br/> 
+    A VERSÃO DO FLUTTER UTILIZADA É 1.17.1
 
-This project is a starting point for a Flutter application.
+## Como rodar
 
-A few resources to get you started if this is your first Flutter project:
+1. Clone este repositório para sua maquina com o seguinte comando:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+      `git clone https://github.com/IsMalware/authentication_app`
+  
+    Apos concluído, rode o seguinte comando: 
+  
+      `cd authentication_app`
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Certifique-se de ter instalado o flutter.
+
+    Para fazer isso:
+   
+      `flutter doctor`
+   
+    se der erro, veja como <a href="https://www.flutter.dev/docs/get-started/install" target=blank>Instalar o Flutter</a>.
+
+3. Conecte um celular ou inicie um emulador que tenha a versão do android 5.1 (API 22) ou superior.
+
+4. inicie um terminal na pasta onde está localizado os arquivos e rode os seguintes comandos:
+  
+   `flutter pub get`
+   
+   `flutter run`
+   
+5. Pronto, basta logar com sua conta do Facebook ou Gmail!
