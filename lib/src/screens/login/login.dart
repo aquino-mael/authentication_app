@@ -16,7 +16,6 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
       body: FutureBuilder(
         future: Firebase.initializeApp(name: 'authenticationApp'),
         builder: (context, snapshot) {
@@ -32,110 +31,114 @@ class _LoginState extends State<Login> {
     );
   }
 
-  PreferredSizeWidget _buildAppBar() {
-    return AppBar(
-      title: Text('Authentication App'),
-      centerTitle: true,
-    );
-  }
-
   Widget _buildBody() {
-    return ListView(
-      children: <Widget>[
-        Form(
-          child: Card(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'LOGIN',
+    return Form(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'LOGIN',
+                  style: TextStyle(
+                    fontSize: 56.0,
+                    color: primary
+                  ),
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
+                Input(
+                  labelText: 'E - mail',
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                Input(
+                  labelText: 'Senha',
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
+                Button(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/home');
+                  },
+                  icon: FontAwesomeIcons.signInAlt,
+                  text: 'Login',
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                Button(
+                  color: primaryLighter,
+                  textColor: primary,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: FontAwesomeIcons.signOutAlt,
+                  text: 'Sair',
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: 'Não possui uma conta? Tente as ',
                     style: TextStyle(
-                      fontSize: 56.0
+                      color: text,
+                      fontSize: 13.0
                     ),
-                  ),
-                  SizedBox(
-                    height: 16.0,
-                  ),
-                  InputText(
-                    labelText: 'E - mail',
-                  ),
-                  SizedBox(
-                    height: 8.0,
-                  ),
-                  InputText(
-                    labelText: 'Senha',
-                  ),
-                  SizedBox(
-                    height: 16.0,
-                  ),
-                  Button(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/home');
-                    },
-                    icon: FontAwesomeIcons.signInAlt,
-                    text: 'Login',
-                  ),
-                  SizedBox(
-                    height: 16.0,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      text: 'Não possui uma conta? Tente as ',
-                      style: TextStyle(
-                        color: text,
-                        fontSize: 13.0
+                    children: <InlineSpan>[
+                      TextSpan(
+                        text: 'alternativas abaixo!',
+                        style: TextStyle(
+                          fontSize: 13.0,
+                          fontWeight: FontWeight.bold,
+                          color: infosColor,
+                        )
                       ),
-                      children: <InlineSpan>[
-                        TextSpan(
-                          text: 'alternativas abaixo!',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
-                          )
-                        ),
-                      ]
-                    ),
+                    ]
                   ),
-                  SizedBox(
-                    height: 16.0
-                  ),
-                  _buildSocialLogin(
-                    assets: 'assets/images/google.png',
-                    boxColor: Color(0xFFF0F0F0),
-                    text: 'Google',
-                    textColor: Color(0xFF4F4F4F),
-                    padding: EdgeInsets.all(8.0),
-                    onTap: () async {
-                      appState = await _googleSignIn();
-                      if(appState == null) return;
-                      Navigator.pushNamed(context, '/home');
-                    },
-                  ),
-                  SizedBox(
-                    height: 12.0
-                  ),
-                  _buildSocialLogin(
-                    assets: 'assets/images/facebook.png',
-                    boxColor: Color(0xFF3B5998),
-                    imageColor: Color(0xFFFFFFFF),
-                    text: 'Facebook',
-                    textColor: Color(0xFFFFFFFF),
-                    padding: EdgeInsets.all(8.0),
-                    onTap: () async {
-                      appState = await _facebookSignIn();
-                      if(appState == null) return;
-                      Navigator.pushNamed(context, '/home');
-                    },
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 16.0
+                ),
+                _buildSocialLogin(
+                  assets: 'assets/images/google.png',
+                  boxColor: background,
+                  text: 'Google',
+                  textColor: textLight,
+                  padding: EdgeInsets.all(8.0),
+                  onTap: () async {
+                    appState = await _googleSignIn();
+                    if(appState == null) return;
+                    Navigator.pushNamed(context, '/home');
+                  },
+                ),
+                SizedBox(
+                  height: 12.0
+                ),
+                _buildSocialLogin(
+                  assets: 'assets/images/facebook.png',
+                  boxColor: secondary,
+                  imageColor: backgroundLigther,
+                  text: 'Facebook',
+                  textColor: secondaryLighter,
+                  padding: EdgeInsets.all(8.0),
+                  onTap: () async {
+                    appState = await _facebookSignIn();
+                    if(appState == null) return;
+                    Navigator.pushNamed(context, '/home');
+                  },
+                ),
+              ],
             ),
           ),
         ),
-      ],
+      ),
     );
   }
 
@@ -150,36 +153,37 @@ class _LoginState extends State<Login> {
   }) {
     return InkWell(
       onTap: onTap,
-      child: Material(
-        elevation: 4.0,
-        child: Container(
-          height: 50,
-          padding: padding,
-          decoration: BoxDecoration(
-            color: boxColor,
-            borderRadius: BorderRadius.circular(4.0),
+      child: Container(
+        height: 50,
+        padding: padding,
+        decoration: BoxDecoration(
+          color: boxColor,
+          borderRadius: BorderRadius.circular(4.0),
+          border: Border.all(
+            width: 1.0,
+            color: Color(0xFFCCCCCC)
           ),
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: 50,
-                  child: Image(
-                    image: AssetImage(assets),
-                    color: imageColor,
-                  ),
+        ),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                width: 50,
+                child: Image(
+                  image: AssetImage(assets),
+                  color: imageColor,
                 ),
-                Text(
-                  text,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    color: textColor,
-                  ),
+              ),
+              Text(
+                text,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 15.0,
+                  color: textColor,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

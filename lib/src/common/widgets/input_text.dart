@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import '../common_colors.dart';
 
-class InputText extends StatefulWidget {
+class Input extends StatefulWidget {
   final bool autofocus;
   final bool autovalidate;
   final String labelText;
 
-  const InputText({
+  const Input({
     @required this.labelText,
     this.autofocus = false,
     this.autovalidate = false,
   });
 
   @override
-  _InputTextState createState() => _InputTextState();
+  _InputState createState() => _InputState();
 }
 
-class _InputTextState extends State<InputText> {
+class _InputState extends State<Input> {
   bool get autofocus => widget.autofocus;
   bool get autovalidate => widget.autovalidate;
   String get labelText => widget.labelText;
@@ -27,9 +28,8 @@ class _InputTextState extends State<InputText> {
       autovalidate: autovalidate,
       decoration: InputDecoration(
         labelText: labelText,
-        border: OutlineInputBorder(
+        border: UnderlineInputBorder(
           borderRadius: BorderRadius.circular(4.0),
-          gapPadding: 5.0
         ),
       ),
     );
