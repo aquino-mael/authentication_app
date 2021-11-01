@@ -3,13 +3,13 @@
 Este é um aplicativo configurado para realizar login através do firebase com o sua conta do google ou facebook
 
 OBS: <br/> 
-    A VERSÃO DO FLUTTER UTILIZADA É 1.17.1
+    Flutter: 1.17.1
 
 ## Como rodar
 
 1. Clone este repositório para sua maquina com o seguinte comando:
 
-      `git clone https://github.com/IsMalware/authentication_app`
+      `git clone https://github.com/aquino-mael/authentication_app`
   
     Apos concluído, rode o seguinte comando: 
   
@@ -25,10 +25,8 @@ OBS: <br/>
 
 3. Conecte um celular ou inicie um emulador que tenha a versão do android 5.1 (API 22) ou superior.
 
-4. inicie um terminal na pasta onde está localizado os arquivos e rode os seguintes comandos:
+4. Em um terminal, na pasta onde está localizado os arquivos, rode os seguintes comandos:
   
    `flutter pub get`
    
    `flutter run`
-   
-5. Pronto, basta logar com sua conta do Facebook ou Gmail!
